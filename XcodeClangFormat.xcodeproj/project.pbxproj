@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,7 @@
 		559B24101D7EBDC400937AB3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559B23F81D7EBDB700937AB3 /* Cocoa.framework */; };
 		559B24161D7EBDC400937AB3 /* ClangFormatExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 559B24151D7EBDC400937AB3 /* ClangFormatExtension.m */; };
 		559B24191D7EBDC400937AB3 /* ClangFormatCommand.mm in Sources */ = {isa = PBXBuildFile; fileRef = 559B24181D7EBDC400937AB3 /* ClangFormatCommand.mm */; };
-		559B241D1D7EBDC400937AB3 /* clang-format.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 559B240F1D7EBDC400937AB3 /* clang-format.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		559B241D1D7EBDC400937AB3 /* clang-format.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 559B240F1D7EBDC400937AB3 /* clang-format.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55BCFFFA1D80170F000EDB05 /* libcurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 557D38B71D7F270E00708269 /* libcurses.tbd */; };
 /* End PBXBuildFile section */
 
@@ -43,15 +43,15 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		559B240A1D7EBDB700937AB3 /* Embed App Extensions */ = {
+		559B240A1D7EBDB700937AB3 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				559B241D1D7EBDC400937AB3 /* clang-format.appex in Embed App Extensions */,
+				559B241D1D7EBDC400937AB3 /* clang-format.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -191,7 +191,7 @@
 				559B23DA1D7EBDA300937AB3 /* Sources */,
 				559B23DB1D7EBDA300937AB3 /* Frameworks */,
 				559B23DC1D7EBDA300937AB3 /* Resources */,
-				559B240A1D7EBDB700937AB3 /* Embed App Extensions */,
+				559B240A1D7EBDB700937AB3 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -227,7 +227,8 @@
 		559B23D61D7EBDA300937AB3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1140;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1530;
 				ORGANIZATIONNAME = Mapbox;
 				TargetAttributes = {
 					559B23DD1D7EBDA300937AB3 = {
@@ -360,6 +361,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -368,9 +370,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -417,6 +421,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -425,9 +430,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -449,10 +456,16 @@
 				CODE_SIGN_ENTITLEMENTS = XcodeClangFormat/XcodeClangFormat.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7U49RNK4H7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeClangFormat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.XcodeClangFormat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -467,10 +480,16 @@
 				CODE_SIGN_ENTITLEMENTS = XcodeClangFormat/XcodeClangFormat.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7U49RNK4H7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeClangFormat/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapbox.XcodeClangFormat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -493,7 +512,12 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "clang-format/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CPLUSPLUSFLAGS = (
 					"--system-header-prefix=$(LLVM_INCLUDE_DIR)",
@@ -517,7 +541,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mapbox.XcodeClangFormat.clang-format";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
 			};
 			name = Debug;
 		};
@@ -537,7 +560,12 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "clang-format/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.2.1;
 				OTHER_CPLUSPLUSFLAGS = (
 					"--system-header-prefix=$(LLVM_INCLUDE_DIR)",
@@ -561,7 +589,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mapbox.XcodeClangFormat.clang-format";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
 			};
 			name = Release;
 		};
